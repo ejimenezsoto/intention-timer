@@ -9,7 +9,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Intention Timer</title>
 </head>
-<body>
-    
+  <body class="app">
+    <header class="header">INTENTION TIMER</header>
+  <section class="new-activity-view">
+    <h1 class="activity-header">New Activity</h1>
+    <div class="form-view">
+      <h2 class="category-header">Select a category:</h2>
+      <form class="new-activity-form">
+        <select class="category-buttons" name="user-selections" multiple>
+          <option class="study-button" value="study">Study</option>
+          <option class="meditate-button" value="meditate">Meditate</option>
+          <option class="exercise-button" value="exercise">Exercise</option>
+        </select>
+          <h2 class="accomplish-header">What would you like to accomplish during this time?</h2>
+        <input type="text" id="accomplish-input" name="user-selections"></input>
+        <div class="set-time">
+          <div class="set-minutes">
+            <h2 class="timer-titles">Minutes</h2>
+            <input type="text" id="minutes-input" name="user-selections"></input>
+          </div>
+          <div class="set-seconds">
+            <h2 class="timer-titles">Seconds</h2>
+            <input type="text" id="seconds-input" name="user-selections"></input>
+          </div>
+        </div>
+        <button class="start-activity-button">START ACTIVITY</button>
+      </form>
+    </div>
+  </section>
+  <section class="past-activities">
+    <h1 class="past-activities-header">Past Activies</h1>
+    <div class="past-activity-log">
+      <p class="no-activies-logged">You haven't logged any activies yet. Complete the form to the left to get started!</p>
+    </div>
+  </section>
+
+
 </body>
 </html>
