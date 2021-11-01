@@ -10,3 +10,140 @@ Exercise: #FD8078
 Error: #EFB7EC
 font-family: 'Montserrat', sans-serif;
 */
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+  background-color: #2B2733;
+  font-family: 'Montserrat', sans-serif;
+  color: #CBC9CF;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  background-color: #46424D;
+  color: #FFF;
+  position: fixed;
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.8vh;
+}
+
+.new-activity-view {
+  width: 70vw;
+  border: 3px solid red;
+  height: 93vh;
+  margin-top: 6vh;
+}
+
+.form-view {
+  background-color: #46424D;
+  margin: 0 2% 4% 2%;
+  height: 80vh;
+}
+
+.activity-header {
+  font-size: 3vh;
+  margin-left: 2%;
+  margin-top: 3%;
+  margin-bottom: 1%;
+  bottom: 0;
+}
+
+.new-activity-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.category-header {
+  font-size: 2vh;
+  font-weight: bold;
+  margin: 5% 0 1% 0;
+}
+
+.category-buttons {
+  height: 15%;
+  border: none;
+  overflow: hidden;
+  display: flex;
+  /* flex-direction: row; */
+  background-color: inherit;
+  justify-content: space-around;
+}
+select:-internal-list-box {
+  display: flex;
+  align-items: center;
+}
+.category-buttons:focus {
+  outline: none;
+}
+.category-buttons option {
+  width: 17%;
+  font-size: 1.2em;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border:rgb(204, 204, 0) solid 1px;
+  border-radius: 5px;
+  color: rgb(204, 204, 0);
+}
+option:hover {
+  width:
+}
