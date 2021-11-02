@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./styles.css">
     <title>Intention Timer</title>
 </head>
@@ -17,11 +18,23 @@
     <div class="form-view">
       <form class="new-activity-form">
         <h2 class="category-header">Select a category:</h2>
-        <select class="category-buttons" name="user-selections" multiple>
-          <option class="study-button" value="study">Study</option>
-          <option class="meditate-button" value="meditate">Meditate</option>
-          <option class="exercise-button" value="exercise">Exercise</option>
-        </select>
+        <div class="btn-group category-buttons" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option3"> 
+            <img src="/assets/study.svg" alt="study-image">
+            Study
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" > 
+            <img src="/assets/meditate.svg" alt="meditate img">
+            Meditate
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option1">
+            <img src="/assets/exercise.svg" alt="">
+            Excercise
+          </label>
+    </div>
           <h2 class="accomplish-header">What would you like to accomplish during this time?</h2>
         <input type="text" id="accomplish-input" name="user-selections"></input>
         <div class="set-time">

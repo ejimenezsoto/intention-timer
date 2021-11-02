@@ -12,8 +12,8 @@ font-family: 'Montserrat', sans-serif;
 */
 
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+    v2.0 | 20110126
+    License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -84,7 +84,6 @@ body {
 
 .new-activity-view {
   width: 70vw;
-  border: 3px solid red;
   height: 93vh;
   margin-top: 6vh;
 }
@@ -108,6 +107,7 @@ body {
   flex-direction: column;
   margin-left: 10%;
   margin-right: 10%;
+  position: relative;
 }
 
 .category-header {
@@ -117,33 +117,77 @@ body {
 }
 
 .category-buttons {
-  height: 15%;
-  border: none;
-  overflow: hidden;
-  display: flex;
-  /* flex-direction: row; */
   background-color: inherit;
-  justify-content: space-around;
-}
-select:-internal-list-box {
   display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  margin-bottom: 3.5vh;
+
+}
+.category-buttons input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+#option1{
+  background-image: url( "assets/exercise.svg" );
+}
+
+.btn{
+  background-color: inherit;
+  width: 25%;
+  border: 3px solid #FFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 5px;
 }
-.category-buttons:focus {
-  outline: none;
+img{
+  width: 30%;
+  margin: 5px;
 }
-.category-buttons option {
-  width: 17%;
-  font-size: 1.2em;
-  padding: 10px 0;
-  text-align: center;
-  margin-right: 20px;
-  display: inline-block;
-  cursor: pointer;
-  border:rgb(204, 204, 0) solid 1px;
-  border-radius: 5px;
-  color: rgb(204, 204, 0);
+
+
+input[type="radio"]:checked{
+  visibility:hidden;
 }
-option:hover {
-  width:
+
+#accomplish-input{
+  background-color: inherit;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 3vh;
+  margin-top: 2vh;
+}
+
+.set-time{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1vh;
+  margin-bottom: 6vh;
+}
+.set-minutes, .set-seconds{
+  width: 40%;
+}
+
+#minutes-input, #seconds-input{
+  background-color: inherit;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+
+
+.start-activity-button{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 2.5vh;
+  width: 15vw;
+  border-radius: 10px;
+  border: 0;
 }
