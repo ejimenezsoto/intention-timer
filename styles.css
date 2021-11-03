@@ -124,17 +124,17 @@ body {
   justify-content: space-between;
   margin-top: 2vh;
   margin-bottom: 3.5vh;
-
 }
+
 .category-buttons input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
-
+/*
 #option1{
   background-image: url( "assets/exercise.svg" );
-}
+} */
 
 .btn{
   background-color: inherit;
@@ -146,11 +146,11 @@ body {
   align-items: center;
   padding: 5px;
 }
+
 img{
   width: 30%;
   margin: 5px;
 }
-
 
 input[type="radio"]:checked{
   visibility:hidden;
@@ -162,6 +162,9 @@ input[type="radio"]:checked{
   border-bottom: 1px solid #fff;
   margin-bottom: 3vh;
   margin-top: 2vh;
+	color: #FFF;
+	font-size: 2vh;
+	height: 3vh;
 }
 
 .set-time{
@@ -180,6 +183,9 @@ input[type="radio"]:checked{
   border-bottom: 1px solid #fff;
   margin-top: 2vh;
   width: 100%;
+	color: #FFF;
+	font-size: 2vh;
+	height: 3vh;
 }
 
 .start-activity-button{
@@ -216,4 +222,40 @@ p {
 	text-align: center;
 	margin: 3vw;
 	line-height: 1.6;
+}
+
+.study-btn-clicked {
+	background-color: inherit;
+  width: 25%;
+  border: 3px solid #B3FD78;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+	color: #B3FD78;
+}
+
+.meditate-btn-clicked {
+	background-color: inherit;
+  width: 25%;
+  border: 3px solid #C278FD;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+	color: #C278FD;
+}
+
+.exercise-btn-clicked {
+	background-color: inherit;
+  width: 25%;
+  border: 3px solid #FD8078;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+	color: #FD8078;
 }
