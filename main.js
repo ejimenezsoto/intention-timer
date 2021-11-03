@@ -8,12 +8,25 @@ var secondsInput = document.querySelector('#seconds-input');
 var startActivityButton = document.querySelector('#start-activity-button');
 var noActivitiesLogged = document.querySelector('#start-activity-button');
 var studyImage = document.querySelector('#study-img');
+var invalidCharacters = ['-', '+', 'e'];
+
+
+var pastActivities= [];
+
 
 //Event Listeners
 studyButton.addEventListener('click', clickStudyButton);
 meditateButton.addEventListener('click', clickMeditateButton);
 exerciseButton.addEventListener('click', clickExerciseButton);
-// startActivityButton.addEventListener('click', submitForm);
+minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
+e.preventDefault();
+}});
+secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
+e.preventDefault();
+}});
+startActivityButton.addEventListener('click', submitForm);
+
+
 
 function clickStudyButton() {
   clearExerciseButton();
@@ -55,4 +68,13 @@ function clearExerciseButton() {
   exerciseButton.classList.add('btn')
   exerciseButton.classList.remove('exercise-btn-clicked')
   document.getElementById('exercise-img').src = './assets/exercise.svg';
+}
+
+function submitForm() {
+  event.preventDefault();
+  if(document.getElementById('study-button').clicked === true) {
+    alert('Study button clicked');
+  }
+
+
 }
