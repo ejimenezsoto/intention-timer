@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="./styles.css">
     <title>Intention Timer</title>
 </head>
@@ -19,19 +19,19 @@
       <form class="new-activity-form">
         <h2 class="category-header">Select a category:</h2>
         <div class="btn-group category-buttons" data-toggle="buttons">
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option3"> 
-            <img src="/assets/study.svg" alt="study-image">
+          <label class="btn btn-primary study-button-label">
+            <input type="radio" name="options" id="study-button" value="study">
+            <img src="./assets/study.svg" alt="study-image" id="study-img">
             Study
           </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" > 
-            <img src="/assets/meditate.svg" alt="meditate img">
+          <label class="btn btn-primary meditate-button">
+            <input type="radio" name="options" id="meditate-button" value="meditate">
+            <img src="./assets/meditate.svg" alt="meditate img" id="meditate-img">
             Meditate
           </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option1">
-            <img src="/assets/exercise.svg" alt="">
+          <label class="btn btn-primary exercise-button">
+            <input type="radio" name="options" id="exercise-button" value="exercise">
+            <img src="./assets/exercise.svg" alt="exercise img" id="exercise-img">
             Excercise
           </label>
     </div>
@@ -60,4 +60,6 @@
 
 
 </body>
+<script src="main.js"></script>
+<script src="Activity.js"></script>
 </html>
