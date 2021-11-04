@@ -20,28 +20,31 @@
         <h2 class="category-header">Select a category:</h2>
         <div class="btn-group category-buttons" data-toggle="buttons">
           <label class="btn btn-primary study-button-label">
-            <input type="radio" name="options" id="study-button" value="study">
+            <input type="radio" name="options" id="study-button">
             <img src="./assets/study.svg" alt="study-image" id="study-img">
             Study
           </label>
           <label class="btn btn-primary meditate-button">
-            <input type="radio" name="options" id="meditate-button" value="meditate">
+            <input type="radio" name="options" id="meditate-button">
             <img src="./assets/meditate.svg" alt="meditate img" id="meditate-img">
             Meditate
           </label>
           <label class="btn btn-primary exercise-button">
-            <input type="radio" name="options" id="exercise-button" value="exercise">
+            <input type="radio" name="options" id="exercise-button">
             <img src="./assets/exercise.svg" alt="exercise img" id="exercise-img">
             Excercise
           </label>
-    </div>
+          <p class="category-warning hidden">Please select a category.</p>
+        </div>
           <h2 class="accomplish-header">What would you like to accomplish during this time?</h2>
         <input type="text" id="accomplish-input" name="user-selections"></input>
+        <p class="accomplish-warning hidden">A description is required.</p>
         <div class="set-time">
           <div class="set-minutes">
             <h2 class="timer-titles">Minutes</h2>
             <input type="text" id="minutes-input" name="user-selections"></input>
           </div>
+          <p class="time-warning hidden">Please specify a time in minutes and seconds.</p>
           <div class="set-seconds">
             <h2 class="timer-titles">Seconds</h2>
             <input type="text" id="seconds-input" name="user-selections"></input>

@@ -259,3 +259,7 @@ p {
   padding: 5px;
 	color: #FD8078;
 }
+
+.hidden {
+	display: none;
+}
