@@ -213,14 +213,9 @@ input[type="radio"]:checked{
   bottom: 0;
 }
 
-/* .past-activities-logged {
-	text-align: center;
-	margin: 3vw;
-} */
 
-p {
+.p-input {
 	text-align: center;
-	margin: 3vw;
 	line-height: 1.6;
 }
 
@@ -258,6 +253,34 @@ p {
   align-items: center;
   padding: 5px;
 	color: #FD8078;
+}
+
+.past-activity-card{
+  background-color: #46424D;
+  margin: 0 2% 4% 2%;
+  height: 9vh;
+  border-radius: 5px;
+  padding-left: 7px;
+  padding-top: 7px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.past-activity-title{
+  font-size: 1.8vh;
+  margin-bottom: 1%;
+}
+.past-activity-description{
+  font-size: 1.5vh;
+  position: absolute;
+  bottom: 10px;
+}
+.color{
+  border-left: 4px solid #B3FD78;
+  height: 3.5vh;
+  margin-right: 4%;
+  border-radius: 5px;
 }
 
 .hidden {

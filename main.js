@@ -11,12 +11,22 @@ var studyImage = document.querySelector('#study-img');
 var categoryWarning = document.querySelector('.category-warning');
 var accomplishWarning = document.querySelector('.accomplish-warning');
 var timeWarning = document.querySelector('.time-warning');
+var invalidCharacters = ['-', '+', 'e'];
+var activitys = [];
 
 //Event Listeners
 studyButton.addEventListener('click', clickStudyButton);
 meditateButton.addEventListener('click', clickMeditateButton);
 exerciseButton.addEventListener('click', clickExerciseButton);
 startActivityButton.addEventListener('click', validateForm);
+minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
+  e.preventDefault();
+  }});
+  secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
+  e.preventDefault();
+  }});
+
+
 
 function hide(element) {
   element.classList.add('hidden');
@@ -92,11 +102,11 @@ function giveExerciseButtonValue() {
 function validateForm(event) {
   event.preventDefault();
   validateDescriptionInput();
-  validateDescriptionInput();
   validateMinutes();
   validateSeconds();
+  console.log("Click")
   if (checkIfAllValid()) {
-    console.log('This is where we would fire the function to create a class and start the timer');
+    createActivity();
   }
 }
 
@@ -107,6 +117,17 @@ function validateCategoryButtons() {
     show(categoryWarning);
   }
 }
+
+function chooseCategory() {
+  if(exerciseButton.value === 'exercise') {
+    return 'exercise';
+  } else if(meditateButton.value === 'meditate') {
+    return 'meditate';
+  } else if(studyButton.value === 'study') {
+    return 'study';
+  }
+}
+
 
 function validateDescriptionInput() {
   if (accomplishInput.value === '') {
@@ -136,10 +157,15 @@ function checkIfAllValid() {
   if (exerciseButton.value === 'exercise' ||
     meditateButton.value === 'meditate' ||
     studyButton.value === 'study' &&
-    accomplishInput.value != '' &&
-    typeof minutesInput.value == 'number' &&
-    typeof secondsInput.value == 'number') {
+    accomplishInput.value != '') {
       return true;
+
     }
   return false;
+}
+
+function createActivity() {
+  var activity = new Activity(chooseCategory(), accomplishInput.value, minutesInput.value, secondsInput.value);
+  activitys.push(activity);
+  console.log(activitys);
 }
