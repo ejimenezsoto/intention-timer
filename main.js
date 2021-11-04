@@ -31,6 +31,7 @@ function clickStudyButton() {
   clearMeditateButton();
   studyButton.classList.remove('btn')
   studyButton.classList.add('study-btn-clicked')
+  giveStudyButtonValue();
   document.getElementById('study-img').src = './assets/study-active.svg';
 }
 
@@ -39,6 +40,7 @@ function clickMeditateButton() {
   clearExerciseButton();
   meditateButton.classList.remove('btn')
   meditateButton.classList.add('meditate-btn-clicked')
+  giveMeditateButtonValue();
   document.getElementById('meditate-img').src = './assets/meditate-active.svg';
 }
 
@@ -47,6 +49,7 @@ function clickExerciseButton() {
   clearMeditateButton();
   exerciseButton.classList.remove('btn')
   exerciseButton.classList.add('exercise-btn-clicked')
+  giveExerciseButtonValue();
   document.getElementById('exercise-img').src = './assets/exercise-active.svg';
 }
 
@@ -68,22 +71,39 @@ function clearExerciseButton() {
   document.getElementById('exercise-img').src = './assets/exercise.svg';
 }
 
+function giveStudyButtonValue() {
+  studyButton.value = 'study';
+  meditateButton.value = '';
+  exerciseButton.value = '';
+}
+
+function giveMeditateButtonValue() {
+  studyButton.value = '';
+  meditateButton.value = 'meditate';
+  exerciseButton.value = '';
+}
+
+function giveExerciseButtonValue() {
+  studyButton.value = '';
+  meditateButton.value = '';
+  exerciseButton.value = 'exercise';
+}
+
 function validateForm(event) {
   event.preventDefault();
-  console.log('I got here');
   validateDescriptionInput();
   validateDescriptionInput();
   validateMinutes();
   validateSeconds();
-  // if (checkIfAllValid()) {
-  //   makeClass();
-  // }
+  if (checkIfAllValid()) {
+    console.log('This is where we would fire the function to create a class and start the timer');
+  }
 }
 
 function validateCategoryButtons() {
-  if (!exerciseButton.classList.includes('exerceise-button-clicked') &&
-    !meditateButton.classList.includes('meditate-button-clicked') &&
-    !studyButton.classList.includes('study-button-clicked')) {
+  if (!exerciseButton.value === 'exercise' &&
+    !meditateButton.value === 'meditate' &&
+    !studyButton.value === 'study') {
     show(categoryWarning);
   }
 }
@@ -113,12 +133,12 @@ function clearWarnings() {
 }
 
 function checkIfAllValid() {
-  if (exerciseButton.classList.includes('exerceise-button-clicked') ||
-    meditateButton.classList.includes('meditate-button-clicked') ||
-    studyButton.classList.includes('study-button-clicked') &&
-    !accomplishInput.value === '' &&
-    !minutesInput.value === '' &&
-    !secondsInput.value === '') {
+  if (exerciseButton.value === 'exercise' ||
+    meditateButton.value === 'meditate' ||
+    studyButton.value === 'study' &&
+    accomplishInput.value != '' &&
+    typeof minutesInput.value == 'number' &&
+    typeof secondsInput.value == 'number') {
       return true;
     }
   return false;
