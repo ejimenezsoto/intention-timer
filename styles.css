@@ -285,15 +285,6 @@ input[type="radio"]:checked{
   margin-right: 4%;
   border-radius: 5px;
 }
-
-.hidden {
-	display: none;
-}
-
-.visibility-hidden{
-  visibility: hidden;
-}
-
 .warning{
 display: flex;
 align-items: end;
@@ -303,4 +294,36 @@ position:relative;
 .warning-image{
   height: 1.6vh;
   width: 1.6vh;
+}
+.time-view{
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+}
+.align-timer{
+	display: flex;
+	flex-direction: row;
+}
+.minutes, .seconds{
+	font-family: "Montserrat", sans-serif;
+	font-size: 10vh;
+	font-weight: 1000;
+}
+.start-timer-button{
+	height: 25vh;
+	width: 25vh;
+	border-radius: 50%;
+	background-color: inherit;
+	border: 3px solid purple;
+	color: #CBC9CF;
+	font-size: 3vh;
+}
+
+.hidden {
+	display: none;
+}
+.visibility-hidden{
+	visibility: hidden;
 }

@@ -16,7 +16,7 @@
   <section class="new-activity-view">
     <h1 class="activity-header">New Activity</h1>
     <div class="form-view">
-      <form class="new-activity-form">
+      <form class="new-activity-form hidden">
         <h2 class="category-header">Select a category:</h2>
         <div class="btn-group category-buttons" data-toggle="buttons">
           <label class="btn btn-primary study-button-label">
@@ -55,7 +55,15 @@
         <p class="warning p-input time-warning visibility-hidden"><img src="./assets/warning.svg" class="warning-image">Please specify a time in minutes and seconds.</p>
         <button class="start-activity-button">START ACTIVITY</button>
       </form>
+    <div class="time-view">
+      <h3 class="timer-view-header">Deep Breathing</h3>
+      <div class="align-timer">
+        <p class="minutes">05:</p>
+        <p class="seconds">00</p>
+      </div>
+      <button class="start-timer-button">START</button>
     </div>
+  </div>
   </section>
   <section class="past-activities">
     <h1 class="past-activities-header">Past Activies</h1>
@@ -69,7 +77,7 @@
             <p class="past-activity-description">This is the description</p>
           </div>
           <div class="color">
-            
+
           </div>
         </div>
       </div>
