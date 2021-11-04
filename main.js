@@ -1,7 +1,10 @@
 var newActivityView = document.querySelector('.new-activity-view');
 var studyButton = document.querySelector('.study-button-label');
+var studyRadioButton = document.getElementById("study-button")
 var meditateButton = document.querySelector('.meditate-button');
+var meditateRadioButton = document.getElementById("meditate-button");
 var exerciseButton = document.querySelector('.exercise-button');
+var exerciseRadioButton = document.getElementById("exercise-button");
 var accomplishInput = document.querySelector('#accomplish-input');
 var minutesInput = document.querySelector('#minutes-input');
 var secondsInput = document.querySelector('#seconds-input');
@@ -12,7 +15,7 @@ var categoryWarning = document.querySelector('.category-warning');
 var accomplishWarning = document.querySelector('.accomplish-warning');
 var timeWarning = document.querySelector('.time-warning');
 var invalidCharacters = ['-', '+', 'e'];
-var activitys = [];
+var activities = [];
 
 //Event Listeners
 studyButton.addEventListener('click', clickStudyButton);
@@ -26,14 +29,13 @@ minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.incl
   e.preventDefault();
   }});
 
-
-
 function hide(element) {
-  element.classList.add('hidden');
+  element.classList.add('visibility-hidden');
 }
 
 function show(element) {
-  element.classList.remove('hidden');
+  console.log(element)
+  element.classList.remove('visibility-hidden');
 }
 
 function clickStudyButton() {
@@ -41,7 +43,6 @@ function clickStudyButton() {
   clearMeditateButton();
   studyButton.classList.remove('btn')
   studyButton.classList.add('study-btn-clicked')
-  giveStudyButtonValue();
   document.getElementById('study-img').src = './assets/study-active.svg';
 }
 
@@ -50,7 +51,6 @@ function clickMeditateButton() {
   clearExerciseButton();
   meditateButton.classList.remove('btn')
   meditateButton.classList.add('meditate-btn-clicked')
-  giveMeditateButtonValue();
   document.getElementById('meditate-img').src = './assets/meditate-active.svg';
 }
 
@@ -59,7 +59,6 @@ function clickExerciseButton() {
   clearMeditateButton();
   exerciseButton.classList.remove('btn')
   exerciseButton.classList.add('exercise-btn-clicked')
-  giveExerciseButtonValue();
   document.getElementById('exercise-img').src = './assets/exercise-active.svg';
 }
 
@@ -81,53 +80,37 @@ function clearExerciseButton() {
   document.getElementById('exercise-img').src = './assets/exercise.svg';
 }
 
-function giveStudyButtonValue() {
-  studyButton.value = 'study';
-  meditateButton.value = '';
-  exerciseButton.value = '';
-}
 
-function giveMeditateButtonValue() {
-  studyButton.value = '';
-  meditateButton.value = 'meditate';
-  exerciseButton.value = '';
-}
-
-function giveExerciseButtonValue() {
-  studyButton.value = '';
-  meditateButton.value = '';
-  exerciseButton.value = 'exercise';
+function whichOneIsClicked(){
+  if(studyRadioButton.checked){
+    return studyRadioButton.value
+  } else if(meditateRadioButton.checked){
+    return meditateRadioButton.value
+  } else if(exerciseRadioButton.checked) {
+    return exerciseRadioButton.value
+  }
 }
 
 function validateForm(event) {
   event.preventDefault();
   validateDescriptionInput();
+  validateCategoryButtons()
   validateMinutes();
   validateSeconds();
-  console.log("Click")
   if (checkIfAllValid()) {
+    console.log("click")
+    whichOneIsClicked();
     createActivity();
   }
 }
 
 function validateCategoryButtons() {
-  if (!exerciseButton.value === 'exercise' &&
-    !meditateButton.value === 'meditate' &&
-    !studyButton.value === 'study') {
+  if (!exerciseRadioButton.checked &&
+    !meditateRadioButton.checked &&
+    !studyRadioButton.checked) {
     show(categoryWarning);
   }
 }
-
-function chooseCategory() {
-  if(exerciseButton.value === 'exercise') {
-    return 'exercise';
-  } else if(meditateButton.value === 'meditate') {
-    return 'meditate';
-  } else if(studyButton.value === 'study') {
-    return 'study';
-  }
-}
-
 
 function validateDescriptionInput() {
   if (accomplishInput.value === '') {
@@ -154,18 +137,16 @@ function clearWarnings() {
 }
 
 function checkIfAllValid() {
-  if (exerciseButton.value === 'exercise' ||
-    meditateButton.value === 'meditate' ||
-    studyButton.value === 'study' &&
+  if (exerciseRadioButton.checked||
+    meditateRadioButton.checked||
+    studyRadioButton.checked &&
     accomplishInput.value != '') {
       return true;
-
     }
   return false;
 }
 
 function createActivity() {
-  var activity = new Activity(chooseCategory(), accomplishInput.value, minutesInput.value, secondsInput.value);
-  activitys.push(activity);
-  console.log(activitys);
+  var activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
+  activities.push(activity);
 }
