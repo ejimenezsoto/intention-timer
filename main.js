@@ -18,6 +18,7 @@ var startTimerButton = document.querySelector('.start-timer-button');
 var timerView = document.querySelector('.time-view');
 var invalidCharacters = ['-', '+', 'e'];
 var activities = [];
+var activity = {} ;
 
 var timerViewHeader = document.querySelector('.timer-view-header');
 var time = document.querySelector('.time');
@@ -31,10 +32,11 @@ startActivityButton.addEventListener('click', validateForm);
 minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
-  secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
+secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
-  startTimerButtom.addEventListener('click', startCountdown);
+
+startTimerButton.addEventListener('click', startCountdown);
 
 function hide(element) {
   element.classList.add('visibility-hidden');
@@ -158,7 +160,7 @@ function checkIfAllValid() {
 }
 
 function createActivity() {
-  var activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
+  activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
   activities.push(activity);
   updateTimer(activity);
 }
@@ -171,4 +173,8 @@ newActivityForm.classList.add('hidden');
 function updateTimer(activity) {
   timerViewHeader.innerText = `${accomplishInput.value}`;
   time.innerText = `${minutesInput.value}:${secondsInput.value}`;
+}
+
+function startCountdown(activity) {
+  activities[activities.length - 1].countdown();
 }
