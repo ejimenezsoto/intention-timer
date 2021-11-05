@@ -298,15 +298,16 @@ position:relative;
 .time-view{
 	height: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 }
 .align-timer{
 	display: flex;
 	flex-direction: row;
+	margin-bottom: 5%;
 }
-.minutes, .seconds{
+.time{
 	font-family: "Montserrat", sans-serif;
 	font-size: 10vh;
 	font-weight: 1000;
@@ -320,10 +321,24 @@ position:relative;
 	color: #CBC9CF;
 	font-size: 3vh;
 }
+.active-study-timer{
+	border: 3px solid #B3FD78;
+}
+.active-meditate-timer{
+	border: 3px solid #C278FD;
+}
+.active-exercise-timer{
+	border: 3px solid #FD8078;
+}
 
 .hidden {
 	display: none;
 }
 .visibility-hidden{
 	visibility: hidden;
+}
+.timer-view-header{
+	margin: 10% 0 1% 0;
+	font-size: 2.5vh;
+
 }

@@ -1,4 +1,4 @@
-var newActivityView = document.querySelector('.new-activity-view');
+var newActivityForm = document.querySelector('.new-activity-form');
 var studyButton = document.querySelector('.study-button-label');
 var studyRadioButton = document.getElementById("study-button")
 var meditateButton = document.querySelector('.meditate-button');
@@ -14,8 +14,14 @@ var studyImage = document.querySelector('#study-img');
 var categoryWarning = document.querySelector('.category-warning');
 var accomplishWarning = document.querySelector('.accomplish-warning');
 var timeWarning = document.querySelector('.time-warning');
+var startTimerButton = document.querySelector('.start-timer-button');
+var timerView = document.querySelector('.time-view');
 var invalidCharacters = ['-', '+', 'e'];
 var activities = [];
+
+var timerViewHeader = document.querySelector('.timer-view-header');
+var time = document.querySelector('.time');
+
 
 //Event Listeners
 studyButton.addEventListener('click', clickStudyButton);
@@ -28,6 +34,7 @@ minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.incl
   secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
+  startTimerButtom.addEventListener('click', startCountdown);
 
 function hide(element) {
   element.classList.add('visibility-hidden');
@@ -44,6 +51,7 @@ function clickStudyButton() {
   studyButton.classList.remove('btn')
   studyButton.classList.add('study-btn-clicked')
   document.getElementById('study-img').src = './assets/study-active.svg';
+  startTimerButton.classList.add('active-study-timer');
 }
 
 function clickMeditateButton() {
@@ -52,6 +60,7 @@ function clickMeditateButton() {
   meditateButton.classList.remove('btn')
   meditateButton.classList.add('meditate-btn-clicked')
   document.getElementById('meditate-img').src = './assets/meditate-active.svg';
+  startTimerButton.classList.add('active-meditate-timer');
 }
 
 function clickExerciseButton() {
@@ -60,6 +69,7 @@ function clickExerciseButton() {
   exerciseButton.classList.remove('btn')
   exerciseButton.classList.add('exercise-btn-clicked')
   document.getElementById('exercise-img').src = './assets/exercise-active.svg';
+  startTimerButton.classList.add('active-exercise-timer');
 }
 
 function clearStudyButton() {
@@ -101,6 +111,7 @@ function validateForm(event) {
     console.log("click")
     whichOneIsClicked();
     createActivity();
+    changeView();
   }
 }
 
@@ -149,4 +160,15 @@ function checkIfAllValid() {
 function createActivity() {
   var activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
   activities.push(activity);
+  updateTimer(activity);
+}
+
+function changeView() {
+timerView.classList.remove('hidden');
+newActivityForm.classList.add('hidden');
+}
+
+function updateTimer(activity) {
+  timerViewHeader.innerText = `${accomplishInput.value}`;
+  time.innerText = `${minutesInput.value}:${secondsInput.value}`;
 }
