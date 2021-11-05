@@ -16,6 +16,8 @@ var accomplishWarning = document.querySelector('.accomplish-warning');
 var timeWarning = document.querySelector('.time-warning');
 var startTimerButton = document.querySelector('.start-timer-button');
 var timerView = document.querySelector('.time-view');
+var logActivityButton = document.querySelector(".log-activity-button")
+var pastActivityLog = document.querySelector(".past-activity-log");
 var invalidCharacters = ['-', '+', 'e'];
 var activities = [];
 var activity = {};
@@ -29,6 +31,7 @@ studyButton.addEventListener('click', clickStudyButton);
 meditateButton.addEventListener('click', clickMeditateButton);
 exerciseButton.addEventListener('click', clickExerciseButton);
 startActivityButton.addEventListener('click', validateForm);
+logActivityButton.addEventListener('click', clickLogActivityButton);
 minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
@@ -161,8 +164,8 @@ function checkIfAllValid() {
 
 function createActivity() {
   activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
-  activities.push(activity);
   updateTimer(activity);
+  return activity
 }
 
 function changeView() {
@@ -176,5 +179,22 @@ function updateTimer() {
 }
 
 function startCountdown() {
-  activities[activities.length - 1].countdown(minutesInput.value, secondsInput.value);
+  activity.countdown(minutesInput.value, secondsInput.value);
+}
+console.log(activity)
+function clickLogActivityButton(activity){
+  activities.push(activity);
+  pastActivityLog.innerHTML = `
+    <div>
+        <div class="past-activity-card">
+          <div>
+            <p class="past-activity-title">${activity.category}</p>
+            <p class="past-activity-time">${activity.minutes}:${activity.seconds}</p>
+            <p class="past-activity-description">${activity.description}</p>
+          </div>
+          <div class="color">
+          </div>
+        </div>
+    </div>
+  `
 }

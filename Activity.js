@@ -30,7 +30,6 @@ class Activity {
       } else if(minutes > 10 && seconds < 10){
         time.innerText = `${minutes}:0${seconds}`
       }
-
       // time.innerText = `${minutes}:${seconds}`;
     }, 1000);
 }
