@@ -7,16 +7,21 @@ class Activity {
     this.completed = false;
     this.id = Date.now();
   }
-  countdown() {
-    setInterval(function() {
-} else if (this.seconds > 0) {
-this.seconds--;
-} else if (this.minutes > 1) {
-	this.minutes--;
-	this.seconds += 59;
-} else {clearInterval()}
-time.innerText = `${this.minutes}:${this.seconds}`;
-), 1000}
+  countdown(minutes, seconds) {
+    setInterval(function(){
+      console.log(this.seconds)
+      if (seconds > 0) {
+        seconds -= 1;
+      } else if (minutes > 0) {
+        seconds += 59;
+        minutes -= 1;
+      } else {clearInterval(function() {
+        time.innerText = '00:00';
+        startTimerButton.innerText = 'COMPLETE!'
+      })};
+      time.innerText = `${minutes}:${seconds}`;
+    }, 1000);
+}
   markComplete() {
 
   }

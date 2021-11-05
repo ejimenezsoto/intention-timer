@@ -18,7 +18,7 @@ var startTimerButton = document.querySelector('.start-timer-button');
 var timerView = document.querySelector('.time-view');
 var invalidCharacters = ['-', '+', 'e'];
 var activities = [];
-var activity = {} ;
+var activity = {};
 
 var timerViewHeader = document.querySelector('.timer-view-header');
 var time = document.querySelector('.time');
@@ -110,7 +110,7 @@ function validateForm(event) {
   validateMinutes();
   validateSeconds();
   if (checkIfAllValid()) {
-    console.log("click")
+    // console.log("click")
     whichOneIsClicked();
     createActivity();
     changeView();
@@ -150,8 +150,8 @@ function clearWarnings() {
 }
 
 function checkIfAllValid() {
-  if (exerciseRadioButton.checked||
-    meditateRadioButton.checked||
+  if (exerciseRadioButton.checked ||
+    meditateRadioButton.checked ||
     studyRadioButton.checked &&
     accomplishInput.value != '') {
       return true;
@@ -170,11 +170,11 @@ timerView.classList.remove('hidden');
 newActivityForm.classList.add('hidden');
 }
 
-function updateTimer(activity) {
+function updateTimer() {
   timerViewHeader.innerText = `${accomplishInput.value}`;
   time.innerText = `${minutesInput.value}:${secondsInput.value}`;
 }
 
-function startCountdown(activity) {
-  activities[activities.length - 1].countdown();
+function startCountdown() {
+  activities[activities.length - 1].countdown(minutesInput.value, secondsInput.value);
 }
