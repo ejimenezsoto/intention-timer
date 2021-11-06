@@ -70,7 +70,6 @@ function hide(element) {
 }
 
 function show(element) {
-  console.log(element)
   element.classList.remove('visibility-hidden');
 }
 
@@ -159,13 +158,13 @@ function validateDescriptionInput() {
 }
 
 function validateMinutes() {
-  if (minutesInput.value === '') {
+  if (minutesInput.value === '' || minutesInput.value > 60) {
     show(timeWarning);
   }
 }
 
 function validateSeconds() {
-  if (secondsInput.value === '') {
+  if (secondsInput.value === '' || secondsInput.value > 60) {
     show(timeWarning);
   }
 }
@@ -180,7 +179,9 @@ function checkIfAllValid() {
   if (exerciseRadioButton.checked ||
     meditateRadioButton.checked ||
     studyRadioButton.checked &&
-    accomplishInput.value != '') {
+    accomplishInput.value != '' &&
+    minutesInput.value <= 60 &&
+    secondsInput.value <=60) {
       return true;
     }
   return false;
@@ -201,11 +202,12 @@ newActivityForm.classList.add('hidden');
 
 function updateTimer() {
   timerViewHeader.innerText = `${accomplishInput.value}`;
-  time.innerText = `${minutesInput.value}:${secondsInput.value}`;
+  time.innerText = `${minutesInput.value.padStart(2, "0")}:${secondsInput.value.padStart(2, "0")}`;
 }
 
 function startCountdown() {
   activity.countdown(minutesInput.value, secondsInput.value);
+  startTimerButton.disabled = true;
 }
 
 function clickLogActivityButton() {

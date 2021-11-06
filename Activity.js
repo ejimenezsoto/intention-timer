@@ -19,10 +19,12 @@ class Activity {
         clearInterval(timer);
         time.innerText = '00:00';
         startTimerButton.innerText = 'COMPLETE!'
+        logActivityButton.classList.remove('hidden');
+        alert('Time is up and your activity is now complete!');
       };
 
       if(minutes < 10 && seconds < 10){
-        time.innerText = `0${minutes}:0${seconds}`
+       time.innerText = `0${minutes}:0${seconds}`
       } else if(minutes > 10 && seconds > 10){
         time.innerText = `${minutes}:${seconds}`
       } else if(minutes < 10 && seconds > 10){
