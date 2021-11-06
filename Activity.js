@@ -8,18 +8,29 @@ class Activity {
     this.id = Date.now();
   }
   countdown(minutes, seconds) {
-    setInterval(function(){
-      console.log(this.seconds)
+    var timer = setInterval(function(){
+      console.log(seconds)
       if (seconds > 0) {
         seconds -= 1;
       } else if (minutes > 0) {
         seconds += 59;
         minutes -= 1;
-      } else {clearInterval(function() {
+      } else {
+        clearInterval(timer);
         time.innerText = '00:00';
         startTimerButton.innerText = 'COMPLETE!'
-      })};
-      time.innerText = `${minutes}:${seconds}`;
+      };
+
+      if(minutes < 10 && seconds < 10){
+        time.innerText = `0${minutes}:0${seconds}`
+      } else if(minutes > 10 && seconds > 10){
+        time.innerText = `${minutes}:${seconds}`
+      } else if(minutes < 10 && seconds > 10){
+        time.innerText = `0${minutes}:${seconds}`
+      } else if(minutes > 10 && seconds < 10){
+        time.innerText = `${minutes}:0${seconds}`
+      }
+      // time.innerText = `${minutes}:${seconds}`;
     }, 1000);
 }
   markComplete() {

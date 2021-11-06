@@ -342,3 +342,21 @@ position:relative;
 	font-size: 2.5vh;
 
 }
+.log-activity-button{
+  margin-top: 3%;
+  width: 21vw;
+  height: 3vh;
+  border-radius: 5px;
+  border: 0;
+  font-size: 1.2em;
+}
+.create-new-container{
+  text-align: center;
+}
+
+.create-new-activity-button{
+  width: 20vw;
+  font-size: 1.1em;
+  margin-top: 10vh;
+  border-radius: 5px;
+}

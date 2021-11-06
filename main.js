@@ -16,9 +16,14 @@ var accomplishWarning = document.querySelector('.accomplish-warning');
 var timeWarning = document.querySelector('.time-warning');
 var startTimerButton = document.querySelector('.start-timer-button');
 var timerView = document.querySelector('.time-view');
+var logActivityButton = document.querySelector(".log-activity-button")
+var pastActivityLog = document.querySelector(".past-activity-log");
+var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var invalidCharacters = ['-', '+', 'e'];
-var activities = [];
+var newActivitiy = [];
+var savedActivities = [];
 var activity = {};
+
 
 var timerViewHeader = document.querySelector('.timer-view-header');
 var time = document.querySelector('.time');
@@ -29,14 +34,36 @@ studyButton.addEventListener('click', clickStudyButton);
 meditateButton.addEventListener('click', clickMeditateButton);
 exerciseButton.addEventListener('click', clickExerciseButton);
 startActivityButton.addEventListener('click', validateForm);
+logActivityButton.addEventListener('click', clickLogActivityButton);
 minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
 secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
-
 startTimerButton.addEventListener('click', startCountdown);
+window.onload = function(){
+  var parsedActivities = JSON.parse(localStorage.getItem('activity'));
+  console.log(parsedActivities)
+  for(var i=0; i<parsedActivities.length; i++) {
+    savedActivities = parsedActivities
+    var activity1 = parsedActivities[i];
+    pastActivityLog.innerHTML += `
+    <div>
+        <div class="past-activity-card">
+          <div>
+            <p class="past-activity-title">${activity1.category}</p>
+            <p class="past-activity-time">${activity1.minutes}:${activity1.seconds}</p>
+            <p class="past-activity-description">${activity1.description}</p>
+          </div>
+          <div class="color">
+          </div>
+        </div>
+    </div>
+  `
+  }
+}
+
 
 function hide(element) {
   element.classList.add('visibility-hidden');
@@ -159,11 +186,13 @@ function checkIfAllValid() {
   return false;
 }
 
+
 function createActivity() {
   activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
-  activities.push(activity);
   updateTimer(activity);
+  newActivitiy.push(activity);
 }
+
 
 function changeView() {
 timerView.classList.remove('hidden');
@@ -176,5 +205,33 @@ function updateTimer() {
 }
 
 function startCountdown() {
-  activities[activities.length - 1].countdown(minutesInput.value, secondsInput.value);
+  activity.countdown(minutesInput.value, secondsInput.value);
 }
+
+function clickLogActivityButton() {
+
+  savedActivities.push(newActivitiy[0]);
+  console.log(savedActivities)
+  localStorage.setItem('activity', JSON.stringify(savedActivities));
+  var parsedActivities = JSON.parse(localStorage.getItem('activity'));
+  pastActivityLog.innerHTML = ""
+  for(var i=0; i<parsedActivities.length; i++) {
+    var activity1 = parsedActivities[i];
+    pastActivityLog.innerHTML += `
+    <div>
+        <div class="past-activity-card">
+          <div>
+            <p class="past-activity-title">${activity1.category}</p>
+            <p class="past-activity-time">${activity1.minutes}:${activity1.seconds}</p>
+            <p class="past-activity-description">${activity1.description}</p>
+          </div>
+          <div class="color">
+          </div>
+        </div>
+    </div>
+  `
+  }
+  timerView.classList.add('hidden');
+  createNewActivityButton.classList.remove('hidden');
+
+  }
