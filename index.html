@@ -44,11 +44,12 @@
         <div class="set-time">
           <div class="set-minutes">
             <h2 class="timer-titles">Minutes</h2>
-            <input type="number" id="minutes-input" name="user-selections"></input>
+            <input type="number" class+"minutes-input" id="minutes-input" name="user-selections" maxlength="2"></input>
           </div>
           <div class="set-seconds">
             <h2 class="timer-titles">Seconds</h2>
-            <input type="number" id="seconds-input" name="user-selections"></input>
+            <input type="number" class+"seconds-input" id="seconds-input" name="user-selections"maxlength="2"></input>
+            <p class="hidden seconds-warning-label">Warning: Please enter a number less than 60</p>
           </div>
         </div>
         <!-- Err Messg -->

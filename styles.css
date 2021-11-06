@@ -360,3 +360,21 @@ position:relative;
   margin-top: 10vh;
   border-radius: 5px;
 }
+.study-color{
+	border-left: 4px solid #B3FD78;
+	height: 3.5vh;
+	margin-right: 4%;
+	border-radius: 5px;
+}
+.meditate-color{
+	border-left: 4px solid #C278FD;
+	height: 3.5vh;
+	margin-right: 4%;
+	border-radius: 5px;
+}
+.exercise-color{
+	border-left: 4px solid #FD8078;
+	height: 3.5vh;
+	margin-right: 4%;
+	border-radius: 5px;
+}
