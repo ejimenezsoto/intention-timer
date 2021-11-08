@@ -36,25 +36,33 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before, 
+blockquote:after,
+q:before, 
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -84,7 +92,7 @@ body {
 
 .new-activity-view {
   width: 70vw;
-  height: 93vh;
+  height: 20vh;
   margin-top: 6vh;
 }
 
@@ -131,10 +139,6 @@ body {
   position: fixed;
   width: 0;
 }
-/*
-#option1{
-  background-image: url( "assets/exercise.svg" );
-} */
 
 .btn{
   background-color: inherit;
@@ -177,11 +181,13 @@ input[type="radio"]:checked{
   margin-top: 1vh;
   margin-bottom: 6vh;
 }
-.set-minutes, .set-seconds{
+
+.set-minutes, 
+.set-seconds{
   width: 40%;
 }
 
-#minutes-input, #seconds-input{
+.time-input{
   background-color: inherit;
   border: 0;
   border-bottom: 1px solid #fff;
@@ -205,8 +211,9 @@ input[type="radio"]:checked{
 .past-activities {
 	border-left: 2px solid #46424D;
 	width: 30vw;
-  height: 93vh;
+  height: 90vh;
   margin-top: 8vh;
+  overflow-y: auto;
 }
 
 .past-activities-header {
@@ -217,45 +224,27 @@ input[type="radio"]:checked{
   bottom: 0;
 }
 
-
 .p-input {
 	line-height: 1.6;
 }
 
 .study-btn-clicked {
-	background-color: inherit;
-  width: 25%;
   border: 3px solid #B3FD78;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px;
 	color: #B3FD78;
 }
 
 .meditate-btn-clicked {
-	background-color: inherit;
-  width: 25%;
   border: 3px solid #C278FD;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px;
 	color: #C278FD;
 }
 
 .exercise-btn-clicked {
-	background-color: inherit;
-  width: 25%;
   border: 3px solid #FD8078;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px;
 	color: #FD8078;
+}
+
+.past-activity-log {
+  margin-top: 2vh;
 }
 
 .past-activity-card{
@@ -274,27 +263,32 @@ input[type="radio"]:checked{
   font-size: 1.8vh;
   margin-bottom: 1%;
 }
+
 .past-activity-description{
   font-size: 1.5vh;
   position: absolute;
   bottom: 10px;
 }
+
 .color{
   border-left: 4px solid #B3FD78;
   height: 3.5vh;
   margin-right: 4%;
   border-radius: 5px;
 }
+
 .warning{
 display: flex;
 align-items: end;
 color: #EFB7EC;
 position:relative;
 }
+
 .warning-image{
   height: 1.6vh;
   width: 1.6vh;
 }
+
 .time-view{
 	height: 100%;
 	display: flex;
@@ -302,16 +296,19 @@ position:relative;
 	align-items: center;
 	flex-direction: column;
 }
+
 .align-timer{
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 5%;
 }
+
 .time{
 	font-family: "Montserrat", sans-serif;
 	font-size: 10vh;
 	font-weight: 1000;
 }
+
 .start-timer-button{
 	height: 25vh;
 	width: 25vh;
@@ -321,12 +318,15 @@ position:relative;
 	color: #CBC9CF;
 	font-size: 3vh;
 }
+
 .active-study-timer{
 	border: 3px solid #B3FD78;
 }
+
 .active-meditate-timer{
 	border: 3px solid #C278FD;
 }
+
 .active-exercise-timer{
 	border: 3px solid #FD8078;
 }
@@ -334,14 +334,16 @@ position:relative;
 .hidden {
 	display: none;
 }
+
 .visibility-hidden{
 	visibility: hidden;
 }
+
 .timer-view-header{
 	margin: 10% 0 1% 0;
 	font-size: 2.5vh;
-
 }
+
 .log-activity-button{
   margin-top: 3%;
   width: 21vw;
@@ -350,6 +352,7 @@ position:relative;
   border: 0;
   font-size: 1.2em;
 }
+
 .create-new-container{
   text-align: center;
 }
@@ -360,21 +363,37 @@ position:relative;
   margin-top: 10vh;
   border-radius: 5px;
 }
+
 .study-color{
 	border-left: 4px solid #B3FD78;
 	height: 3.5vh;
 	margin-right: 4%;
 	border-radius: 5px;
 }
+
 .meditate-color{
 	border-left: 4px solid #C278FD;
 	height: 3.5vh;
 	margin-right: 4%;
 	border-radius: 5px;
 }
+
 .exercise-color{
 	border-left: 4px solid #FD8078;
 	height: 3.5vh;
 	margin-right: 4%;
 	border-radius: 5px;
+}
+
+.no-activies-logged {
+  /* margin: 20px; */
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: .5s;
 }

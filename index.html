@@ -1,84 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./styles.css">
     <title>Intention Timer</title>
-</head>
+  </head>
   <body class="app">
     <header class="header">INTENTION TIMER</header>
-  <section class="new-activity-view">
-    <h1 class="activity-header">New Activity</h1>
-    <div class="form-view">
-      <form class="new-activity-form">
-        <h2 class="category-header">Select a category:</h2>
-        <div class="btn-group category-buttons" data-toggle="buttons">
-          <label class="btn btn-primary study-button-label">
-            <input type="radio" name="options" id="study-button" value="study">
-            <img src="./assets/study.svg" alt="study-image" id="study-img">
-            Study
-          </label>
-          <label class="btn btn-primary meditate-button">
-            <input type="radio" name="options" id="meditate-button" value="meditate">
-            <img src="./assets/meditate.svg" alt="meditate img" id="meditate-img">
-            Meditate
-          </label>
-          <label class="btn btn-primary exercise-button">
-            <input type="radio" name="options" id="exercise-button" value="exercise">
-            <img src="./assets/exercise.svg" alt="exercise img" id="exercise-img">
-            Excercise
-          </label>
-        </div>
-        <!-- Err Messg -->
-        <p class="warning category-warning p-input visibility-hidden"><img src="./assets/warning.svg" class="warning-image">Please select a category.</p>
+    <section class="new-activity-view">
+      <h1 class="activity-header">New Activity</h1>
+      <div class="form-view">
+        <form class="new-activity-form">
+          <h2 class="category-header">Select a category:</h2>
+          <div class="btn-group category-buttons" data-toggle="buttons">
+            <label class="btn btn-primary study-button-label button">
+              <input type="radio" name="options" id="studyButton" value="Study">
+              <img src="./assets/study.svg" alt="study image" id="study-img">
+              Study
+            </label>
+            <label class="btn btn-primary meditate-button button">
+              <input type="radio" name="options" id="meditateButton" value="Meditate">
+              <img src="./assets/meditate.svg" alt="meditate img" id="meditate-img">
+              Meditate
+            </label>
+            <label class="btn btn-primary exercise-button button">
+              <input type="radio" name="options" id="exerciseButton" value="Exercise">
+              <img src="./assets/exercise.svg" alt="exercise img" id="exercise-img">
+              Excercise
+            </label>
+          </div>
+          <!-- Category Err Messg -->
+          <p class="warning category-warning p-input visibility-hidden"><img src="./assets/warning.svg"
+              class="warning-image">Please select a category.</p>
           <h2 class="accomplish-header">What would you like to accomplish during this time?</h2>
-        <input type="text" id="accomplish-input" name="user-selections"></input>
-        <!-- Err Messg -->
-        <p class="warning accomplish-warning p-input visibility-hidden"><img src="./assets/warning.svg" class="warning-image">A description is required.</p>
-        <div class="set-time">
-          <div class="set-minutes">
-            <h2 class="timer-titles">Minutes</h2>
-            <input type="number" class+"minutes-input" id="minutes-input" name="user-selections" maxlength="2"></input>
+          <input type="text" id="accomplish-input" name="user-selections"></input>
+          <!-- Description Err Messg -->
+          <p class="warning accomplish-warning p-input visibility-hidden"><img src="./assets/warning.svg"
+              class="warning-image">A description is required.</p>
+          <div class="set-time">
+            <div class="set-minutes">
+              <h2 class="timer-titles">Minutes</h2>
+              <input type="number" class="time-input" id="minutesInput" name="user-selections" maxlength="2"></input>
+            </div>
+            <div class="set-seconds">
+              <h2 class="timer-titles">Seconds</h2>
+              <input type="number" class="time-input" id="secondsInput" name="user-selections" maxlength="2"></input>
+              <p class="hidden seconds-warning-label">Warning: Please enter a number less than 60</p>
+            </div>
           </div>
-          <div class="set-seconds">
-            <h2 class="timer-titles">Seconds</h2>
-            <input type="number" class+"seconds-input" id="seconds-input" name="user-selections"maxlength="2"></input>
-            <p class="hidden seconds-warning-label">Warning: Please enter a number less than 60</p>
+          <!-- Time Err Messg -->
+          <p class="warning p-input time-warning visibility-hidden"><img src="./assets/warning.svg"
+              class="warning-image">Please enter a valid time input.</p>
+          <button class="start-activity-button button">START ACTIVITY</button>
+        </form>
+        <div class="time-view hidden">
+          <h3 class="timer-view-header">Deep Breathing</h3>
+          <div class="align-timer">
+            <p class="time">05:00</p>
           </div>
+          <button class="start-timer-button button">START</button>
+          <button class="log-activity-button hidden button">LOG ACTIVITY</button>
         </div>
-        <!-- Err Messg -->
-        <p class="warning p-input time-warning visibility-hidden"><img src="./assets/warning.svg" class="warning-image">Please enter a valid time input.</p>
-        <button class="start-activity-button">START ACTIVITY</button>
-      </form>
-    <div class="time-view hidden">
-      <h3 class="timer-view-header">Deep Breathing</h3>
-      <div class="align-timer">
-        <p class="time">05:00</p>
+        <div class="create-new-container">
+          <button class="create-new-activity-button hidden button" onClick="window.location.reload();">CREATE A NEW
+            ACTIVITY</button>
+        </div>
       </div>
-      <button class="start-timer-button">START</button>
-      <button class="log-activity-button hidden">LOG ACTIVITY</button>
-    </div>
-    <div class="create-new-container">
-
-      <button class="create-new-activity-button hidden" onClick="window.location.reload();">CREATE A NEW ACTIVITY</button>
-    </div>
-  </div>
-  </section>
-  <section class="past-activities">
-    <h1 class="past-activities-header">Past Activies</h1>
-    <div class="past-activity-log">
-      <p class="no-activies-logged hidden">You haven't logged any activies yet. Complete the form to the left to get started!</p>
-    </div>
-  </section>
-
-
-</body>
-<script src="Activity.js"></script>
-<script src="main.js"></script>
+    </section>
+    <section class="past-activities">
+      <h1 class="past-activities-header">Past Activies</h1>
+      <div class="past-activity-log">
+        <p class="no-activies-logged">You haven't logged any activies yet.<br>Complete the form to the left to get
+          started!</p>
+      </div>
+    </section>
+  </body>
+  <script src="Activity.js"></script>
+  <script src="main.js"></script>
 </html>
