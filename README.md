@@ -1,48 +1,53 @@
-# What's for Dinner?
+# Intention Timer
 
 ## Overview
 
-This app is a useful tool for choosing what to cook for dinner! You can generate randomized sides, main dishes, desserts, or a combination of all three. You can visit the application [here](https://philalewis.github.io/whats-for-dinner/).
+This app is a useful tool for timing your favorite activities whether that be study, meditative or exercise. Just choose your activity, set a goal, tell the app how long you want to go for and hit start. You can view the application [here](file:///Users/chaddegange/turing/module_1/projects/intention-timer/index.html).
 
 ## How Does It Work?
 
-1) When the page loads, the user is presented with a header and two boxes. The "Add a Recipe" button in the header is not functional. The box on the left asks what you are looking for. Below this are four radio buttons. Below these is a "Let's Cook!" button. When the page loads, the button is disabled and displays partially opaque, to let the user know that they are unable to click the button. The box on the right displays an image of a cook pot.
+1) When the page loads, the user is presented with a New Activity header. Below that are 3 category buttons with hover states informing the user that they are clickable elements on the page. Below that is a user input field, fillable for setting a user defined goal. Lastly, there are a minutes and seconds input that again is user defined, accepts only 2 digits as well as limits the user to inputing no more than 60 seconds. At the bottom right, a Start Activity button is disabled until all fields above have been properly completed. If any fields are not properly completed, an error message pops up to guide the user to a correction.
+![Screen Shot 2021-11-08 at 2 33 39 PM] src = (https://user-images.githubusercontent.com/41452531/140830441-2aa31ea4-ce55-4107-a99c-6278c01d02b5.png)
 
-<img width="1440" alt="Screen Shot 2021-10-31 at 3 08 52 PM" src="https://user-images.githubusercontent.com/65195952/139601402-bfe9df0a-95a9-45db-b821-12f6a96ac822.png">
+2) When the user clicks the Start Activity button, they are taken to a timer view allowing them to hit a Start button and begin the activity. The button has a border color corresponding to the activity category they chose in the home view. Past activities are viewable on the right side of the screen.
 
-2) When the user clicks on one of the radio buttons, the "Let's Cook!" button is enabled and changes to a darker, less opaque shade to let the user know that they may now click the button.
+![Screen Shot 2021-11-08 at 2 34 29 PM] src = (https://user-images.githubusercontent.com/41452531/140830751-ba93fde7-667d-4737-96a0-5be3a2bcc781.png)
 
-<img width="1440" alt="Screen Shot 2021-10-31 at 3 09 13 PM" src="https://user-images.githubusercontent.com/65195952/139601403-45fa3ba6-c4ca-4867-a5bf-02114d028b49.png">
 
-3) When the user clicks the button, the cook pot on the right side disappears and a loading image appears for 1.5 seconds, to simulate searching for a recipe. The loading image then disappears and the recommendation fades in. A "Clear" button also appears at the bottom right side of the box.
+3) When the user clicks the Start button, the time countdown begins. The Start button is disabled once it has been pressed.
 
-<img width="1439" alt="Screen Shot 2021-10-31 at 3 09 27 PM" src="https://user-images.githubusercontent.com/65195952/139601404-044f0549-872b-4a1c-ade4-069d96f05a8f.png">
+![Screen Shot 2021-11-08 at 2 34 45 PM] src = (https://user-images.githubusercontent.com/41452531/140830547-a2c82e6c-5af5-40af-8c1b-93db4cea8bd1.png)
 
-4) When the "Clear" button is clicked, the selection on the radio button is removed, the recommendation disappears, the cook pot fades in, and the "Let's Cook!" button is disabled.
+4) When the timer finishes, the Start button displays a Complete message to the user and a Log Activity button is displayed.
 
-<img width="1440" alt="Screen Shot 2021-10-31 at 3 09 40 PM" src="https://user-images.githubusercontent.com/65195952/139601407-8fbbc4fa-9405-469f-90c0-03424d549c6c.png">
+![Screen Shot 2021-11-08 at 2 35 38 PM] src = (https://user-images.githubusercontent.com/41452531/140831100-81261f34-a12e-4dc2-96df-18e6d97bad79.png)
 
-5) The page is responsive to various screen sizes and orientations. When the user views the app on a screen in portrait layout, the boxes are stacked vertically, instead of horizontally.
+5) When Log Activity is pressed, the activity details are added to the Past Activities log on the right side of the page and a new view is displayed with a Create A New Activity button.
 
-<img width="379" alt="Screen Shot 2021-10-31 at 3 12 24 PM" src="https://user-images.githubusercontent.com/65195952/139601409-47d9cf4d-8c62-40d2-906a-bcf6bfe0eab1.png">
+![Screen Shot 2021-11-08 at 2 35 49 PM] src = (https://user-images.githubusercontent.com/41452531/140831306-23f1b55f-41c6-4934-bd7b-8045348dc7f8.png)>
+
+6) Pressing the Create A New Activity button returns the user to the home view ready to select a new activity and now displaying the previously completed activity on the right side of the page under Past Activities.
+
+![Screen Shot 2021-11-08 at 2 35 58 PM] src = (https://user-images.githubusercontent.com/41452531/140831466-d05bac0c-369d-4921-a1ac-be08c99c1800.png)
+
 
 ## Contributors
 
-- Turing School of Software & Design Frontend Students
-   - Phil Lewis
+- Turing School of Software & Design Front-End Students
+   - Phil Lewis, Enzo Jimenez-Soto, Chad DeGange
 
 ## Future Feature Additions
 
-- Add section for user to add their own recipes
-- Make "Add a Recipe" button functional
-- "Save" or "favorite" feature, where the user can click a button to save the recipe
-- All recipes interface, where the user can view all saved recipes and delete ones they no longer want
+- Expand/Collapse Reflection allowing user to reflect on activity.
+- Favorite and Activity and ability to repeat it.
+- Ability to pause and resume the timer before completion.
+- Animate the timer in a way that communicates remaining time.
 
 ## Technologies Used
 
 -HTML, CSS, Javascript
 
-The spec for this project can be found [here](https://frontend.turing.io/projects/module-1/dinner.html).
+The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/intention-timer-group.html).
 
 ## Installation Instructions
 
