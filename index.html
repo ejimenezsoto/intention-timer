@@ -44,15 +44,16 @@
         <div class="set-time">
           <div class="set-minutes">
             <h2 class="timer-titles">Minutes</h2>
-            <input type="number" id="minutes-input" name="user-selections"></input>
+            <input type="number" class+"minutes-input" id="minutes-input" name="user-selections" maxlength="2"></input>
           </div>
           <div class="set-seconds">
             <h2 class="timer-titles">Seconds</h2>
-            <input type="number" id="seconds-input" name="user-selections"></input>
+            <input type="number" class+"seconds-input" id="seconds-input" name="user-selections"maxlength="2"></input>
+            <p class="hidden seconds-warning-label">Warning: Please enter a number less than 60</p>
           </div>
         </div>
         <!-- Err Messg -->
-        <p class="warning p-input time-warning visibility-hidden"><img src="./assets/warning.svg" class="warning-image">Please specify a time in minutes and seconds.</p>
+        <p class="warning p-input time-warning visibility-hidden"><img src="./assets/warning.svg" class="warning-image">Please enter a valid time input.</p>
         <button class="start-activity-button">START ACTIVITY</button>
       </form>
     <div class="time-view hidden">
@@ -61,7 +62,7 @@
         <p class="time">05:00</p>
       </div>
       <button class="start-timer-button">START</button>
-      <button class="log-activity-button">LOG ACTIVITY</button>
+      <button class="log-activity-button hidden">LOG ACTIVITY</button>
     </div>
     <div class="create-new-container">
 
