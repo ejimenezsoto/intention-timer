@@ -1,15 +1,15 @@
 var newActivityForm = document.querySelector('.new-activity-form');
 var studyButton = document.querySelector('.study-button-label');
-var studyRadioButton = document.getElementById("study-button")
+var studyRadioButton = document.getElementById("studyButton")
 var meditateButton = document.querySelector('.meditate-button');
-var meditateRadioButton = document.getElementById("meditate-button");
+var meditateRadioButton = document.getElementById("meditateButton");
 var exerciseButton = document.querySelector('.exercise-button');
-var exerciseRadioButton = document.getElementById("exercise-button");
+var exerciseRadioButton = document.getElementById("exerciseButton");
 var accomplishInput = document.querySelector('#accomplish-input');
-var minutesInput = document.querySelector('#minutes-input');
-var secondsInput = document.querySelector('#seconds-input');
+var minutesInput = document.querySelector('#minutesInput');
+var secondsInput = document.querySelector('#secondsInput');
 var startActivityButton = document.querySelector('.start-activity-button');
-var noActivitiesLogged = document.querySelector('#no-activies-logged');
+var noActivitiesLogged = document.querySelector('.no-activies-logged');
 var studyImage = document.querySelector('#study-img');
 var categoryWarning = document.querySelector('.category-warning');
 var accomplishWarning = document.querySelector('.accomplish-warning');
@@ -20,15 +20,11 @@ var logActivityButton = document.querySelector(".log-activity-button")
 var pastActivityLog = document.querySelector(".past-activity-log");
 var createNewActivityButton = document.querySelector('.create-new-activity-button')
 var minutesWarning = document.querySelector('.warning-label');
-var invalidCharacters = ['-', '+', 'e'];
-var newActivitiy = [];
-var savedActivities = [];
-var activity = {};
-
-
 var timerViewHeader = document.querySelector('.timer-view-header');
 var time = document.querySelector('.time');
-
+var invalidCharacters = ['-', '+', 'e'];
+var savedActivities = [];
+var activity = {};
 
 //Event Listeners
 studyButton.addEventListener('click', clickStudyButton);
@@ -39,27 +35,31 @@ logActivityButton.addEventListener('click', clickLogActivityButton);
 minutesInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
-
 secondsInput.addEventListener('keydown', function(e) { if(invalidCharacters.includes(e.key)) {
   e.preventDefault();
   }});
 startTimerButton.addEventListener('click', startCountdown);
 window.onload = function(){
   var parsedActivities = JSON.parse(localStorage.getItem('activity'));
-  console.log(parsedActivities)
+  if(parsedActivities.length > 0) {
+    noActivitiesLogged.classList.add('hidden');
+  }
   for(var i=0; i<parsedActivities.length; i++) {
-    savedActivities = parsedActivities
-    var activity1 = parsedActivities[i];
-    if(parsedActivities[i].category === "study") {
-      changeStudyColor(activity1);
-    } else if(parsedActivities[i].category === "meditate") {
-      changeMeditateColor(activity1);
-    } else if(parsedActivities[i].category === "exercise") {
-      changeExerciseColor(activity1);
+    savedActivities = parsedActivities;
+    var currentActivity = parsedActivities[i];
+    var categoryColor = '';
+    if(parsedActivities[i].category === "Study") {
+      categoryColor = 'study-color';
+      changeColor(currentActivity, categoryColor);
+    } else if(parsedActivities[i].category === "Meditate") {
+      categoryColor = 'meditate-color';
+      changeColor(currentActivity, categoryColor);
+    } else if(parsedActivities[i].category === "Exercise") {
+      categoryColor = 'exercise-color';
+      changeColor(currentActivity, categoryColor);
     }
   }
 }
-
 
 function hide(element) {
   element.classList.add('visibility-hidden');
@@ -72,8 +72,7 @@ function show(element) {
 function clickStudyButton() {
   clearExerciseButton();
   clearMeditateButton();
-  studyButton.classList.remove('btn')
-  studyButton.classList.add('study-btn-clicked')
+  studyButton.classList.add('study-btn-clicked');
   document.getElementById('study-img').src = './assets/study-active.svg';
   startTimerButton.classList.add('active-study-timer');
 }
@@ -81,7 +80,6 @@ function clickStudyButton() {
 function clickMeditateButton() {
   clearStudyButton()
   clearExerciseButton();
-  meditateButton.classList.remove('btn')
   meditateButton.classList.add('meditate-btn-clicked')
   document.getElementById('meditate-img').src = './assets/meditate-active.svg';
   startTimerButton.classList.add('active-meditate-timer');
@@ -90,26 +88,22 @@ function clickMeditateButton() {
 function clickExerciseButton() {
   clearStudyButton();
   clearMeditateButton();
-  exerciseButton.classList.remove('btn')
   exerciseButton.classList.add('exercise-btn-clicked')
   document.getElementById('exercise-img').src = './assets/exercise-active.svg';
   startTimerButton.classList.add('active-exercise-timer');
 }
 
 function clearStudyButton() {
-  studyButton.classList.add('btn')
   studyButton.classList.remove('study-btn-clicked')
   document.getElementById('study-img').src = './assets/study.svg';
 }
 
 function clearMeditateButton() {
-  meditateButton.classList.add('btn')
   meditateButton.classList.remove('meditate-btn-clicked')
   document.getElementById('meditate-img').src = './assets/meditate.svg';
 }
 
 function clearExerciseButton() {
-  exerciseButton.classList.add('btn')
   exerciseButton.classList.remove('exercise-btn-clicked')
   document.getElementById('exercise-img').src = './assets/exercise.svg';
 }
@@ -132,7 +126,6 @@ function validateForm(event) {
   validateMinutes();
   validateSeconds();
   if (checkIfAllValid()) {
-    // console.log("click")
     whichOneIsClicked();
     createActivity();
     changeView();
@@ -184,13 +177,10 @@ function checkIfAllValid() {
   return false;
 }
 
-
 function createActivity() {
   activity = new Activity(whichOneIsClicked(), accomplishInput.value, minutesInput.value, secondsInput.value);
   updateTimer(activity);
-  newActivitiy.push(activity);
 }
-
 
 function changeView() {
 timerView.classList.remove('hidden');
@@ -208,72 +198,42 @@ function startCountdown() {
 }
 
 function clickLogActivityButton() {
-
-  savedActivities.push(newActivitiy[0]);
-  console.log(savedActivities)
-  localStorage.setItem('activity', JSON.stringify(savedActivities));
+  activity.markComplete();
+  savedActivities.push(activity);
+  activity.saveToStorage();
+  noActivitiesLogged.classList.add('hidden');
   var parsedActivities = JSON.parse(localStorage.getItem('activity'));
   pastActivityLog.innerHTML = ""
   for(var i=0; i<parsedActivities.length; i++) {
-    var activity1 = parsedActivities[i];
-    if(parsedActivities[i].category === "study") {
-      changeStudyColor(activity1);
-    } else if(parsedActivities[i].category === "meditate") {
-      changeMeditateColor(activity1);
-    } else if(parsedActivities[i].category === "exercise") {
-      changeExerciseColor(activity1);
+    var currentActivity = parsedActivities[i];
+    var categoryColor = '';
+    if(parsedActivities[i].category === "Study") {
+      categoryColor = 'study-color';
+      changeColor(currentActivity, categoryColor);
+    } else if(parsedActivities[i].category === "Meditate") {
+      categoryColor = 'meditate-color';
+      changeColor(currentActivity, categoryColor);
+    } else if(parsedActivities[i].category === "Exercise") {
+      categoryColor = 'exercise-color';
+      changeColor(currentActivity, categoryColor);
     }
-
   }
   timerView.classList.add('hidden');
   createNewActivityButton.classList.remove('hidden');
+}
 
-  }
-
-  function changeStudyColor(activity1) {
-    return pastActivityLog.innerHTML += `
-    <div>
-        <div class="past-activity-card">
-          <div>
-            <p class="past-activity-title">${activity1.category}</p>
-            <p class="past-activity-time">${activity1.minutes.padStart(2, "0")}:${activity1.seconds.padStart(2, "0")}</p>
-            <p class="past-activity-description">${activity1.description}</p>
-          </div>
-          <div class="study-color">
-          </div>
+function changeColor(currentActivity, categoryColor) {
+  return pastActivityLog.innerHTML += `
+  <div>
+      <div class="past-activity-card">
+        <div>
+          <p class="past-activity-title">${currentActivity.category}</p>
+          <p class="past-activity-time">${currentActivity.minutes.padStart(2, "0")}:${currentActivity.seconds.padStart(2, "0")}</p>
+          <p class="past-activity-description">${currentActivity.description}</p>
         </div>
-    </div>
-  `
-  }
-
-  function changeMeditateColor(activity1) {
-    return pastActivityLog.innerHTML += `
-    <div>
-        <div class="past-activity-card">
-          <div>
-            <p class="past-activity-title">${activity1.category}</p>
-            <p class="past-activity-time">${activity1.minutes.padStart(2, "0")}:${activity1.seconds.padStart(2, "0")}</p>
-            <p class="past-activity-description">${activity1.description}</p>
-          </div>
-          <div class="meditate-color">
-          </div>
+        <div class="${categoryColor}">
         </div>
-    </div>
-  `
-  }
-
-  function changeExerciseColor(activity1) {
-    return pastActivityLog.innerHTML += `
-    <div>
-        <div class="past-activity-card">
-          <div>
-            <p class="past-activity-title">${activity1.category}</p>
-            <p class="past-activity-time">${activity1.minutes.padStart(2, "0")}:${activity1.seconds.padStart(2, "0")}</p>
-            <p class="past-activity-description">${activity1.description}</p>
-          </div>
-          <div class="exercise-color">
-          </div>
-        </div>
-    </div>
-  `
-  }
+      </div>
+  </div>
+`
+}

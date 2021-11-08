@@ -9,7 +9,6 @@ class Activity {
   }
   countdown(minutes, seconds) {
     var timer = setInterval(function(){
-      console.log(seconds)
       if (seconds > 0) {
         seconds -= 1;
       } else if (minutes > 0) {
@@ -20,9 +19,7 @@ class Activity {
         time.innerText = '00:00';
         startTimerButton.innerText = 'COMPLETE!'
         logActivityButton.classList.remove('hidden');
-        alert('Time is up and your activity is now complete!');
       };
-
       if(minutes < 10 && seconds < 10){
        time.innerText = `0${minutes}:0${seconds}`
       } else if(minutes > 10 && seconds > 10){
@@ -32,15 +29,12 @@ class Activity {
       } else if(minutes > 10 && seconds < 10){
         time.innerText = `${minutes}:0${seconds}`
       }
-      // time.innerText = `${minutes}:${seconds}`;
     }, 1000);
-}
+  }
   markComplete() {
-
+    this.completed = true;
   }
   saveToStorage() {
-
+    localStorage.setItem('activity', JSON.stringify(savedActivities));
   }
 }
-
-// module.exports = Activity;
