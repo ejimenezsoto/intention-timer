@@ -34,7 +34,9 @@ This app is a useful tool for timing your favorite activities whether that be st
 ## Contributors
 
 - Turing School of Software & Design Front-End Students
-   - Phil Lewis, Enzo Jimenez-Soto, Chad DeGange
+   - Phil Lewis
+   - Enzo Jimenez-Soto
+   - Chad DeGange
 
 ## Future Feature Additions
 
